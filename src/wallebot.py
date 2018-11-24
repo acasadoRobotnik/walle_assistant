@@ -9,7 +9,7 @@ import urllib
 
 class WalleBot(object):
   def __init__(self):
-      self.github_explorer = GitHubExplorer()
+      self.github_explorer = GitHubExplorer(os.environ['WALLE_GITHUB_ORG'])
       self.queue = Queue()
       self.nb_workers = cpu_count()
 

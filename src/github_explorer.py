@@ -5,14 +5,15 @@ import base64
 import requests
 
 class GitHubExplorer(Explorer):
-  def __init__(self):
+  def __init__(self, org):
     self.client = Github(os.environ['WALLE_GITHUB_TOKEN'])
+    self.organization = org
 
   def search(self, query, receiver):
 
     response = "Here's what I've found on Github about '" + query + "': 🐙\n"
 
-    for repo in self.client.get_user().get_repos():
+    for repo in self.client.get_organization(self.organization).get_repos():
       contents = repo.get_contents("")
       while len(contents) > 1:
         content_file = contents.pop(0)
