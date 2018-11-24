@@ -1,0 +1,7 @@
+{
+  "name": "Walle assistant",
+  "description": "All your team's knowledge in one place",
+  "repository": "https://github.com/acasadoRobotnik/walle_assistant",
+  "logo": "assets/img/logo.png",
+  "keywords": ["Slack", "Paths", "Slash commands"]
+}
