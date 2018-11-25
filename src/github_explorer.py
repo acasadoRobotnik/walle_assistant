@@ -11,7 +11,7 @@ class GitHubExplorer(Explorer):
 
   def search(self, query, receiver):
 
-    response = "Here's what I've found on Github about '" + query + "': 🐙\n"
+    response = ""
 
     for repo in self.client.get_organization(self.organization).get_repos():
       contents = repo.get_contents("")
@@ -22,6 +22,11 @@ class GitHubExplorer(Explorer):
           if query in str(decoded_content):
             response += "*" + repo.full_name + "*:\n"
             response += content_file.html_url + "\n\n"
+
+    if len(response) == 0:
+      response = self.no_luck_msg(query, 'GitHub')
+    else:
+      response = self.success_msg(query, 'GitHub') + "\n" + response
 
     r = requests.post(receiver, json={'text': response})
 

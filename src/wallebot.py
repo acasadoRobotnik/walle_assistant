@@ -1,17 +1,19 @@
 from src.github_explorer import GitHubExplorer
 
-from multiprocessing import Process, Queue, cpu_count
 from bottle import run,post,request,response,route
+from multiprocessing import Process, Queue, cpu_count
+
+import random
 import os
 import urllib
-
-
 
 class WalleBot(object):
   def __init__(self):
       self.github_explorer = GitHubExplorer(os.environ['WALLE_GITHUB_ORG'])
       self.queue = Queue()
       self.nb_workers = cpu_count()
+      self.wait_messages = ["I'm working on it...", "Give me a second please :wink:",
+                            "Let me take a look... :mag:", "Let's see what we can find..."]
 
       for i in range(self.nb_workers):
         msg_puller_process = Process(target=self.pull_msgs, args=[self.queue])
@@ -23,7 +25,7 @@ class WalleBot(object):
     package = {"response_type": "in_channel", "text": "{}".format(postdata)}
     response.content_type = 'application/json'
     self.queue.put((postdata, receiver))
-    return "I'm working on it..."
+    return random.sample(self.wait_messages, 1)
 
   def search_on_github(self, *args):
     return self.github_explorer.search(args[0], args[1])
