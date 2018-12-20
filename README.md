@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/87e6a6b5e9cf4c2c2764/maintainability)](https://codeclimate.com/github/acasadoRobotnik/walle_assistant/maintainability)
+
 # Walle Assistant :robot: 
 ## All your team's knowledge in one place.
 
@@ -13,5 +15,3 @@ This repo holds all the code for the web app running on our servers to make Wall
 - [ ] Google Sites
 
 If you miss an integration you can just open an issue and let us know! :wink:
-
-![Walle Assistant](https://avatars.slack-edge.com/2018-11-25/488774762102_795dfe30514afb783657_512.png)

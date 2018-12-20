@@ -1,3 +1,4 @@
 bottle==0.12.13
 PyGithub==1.43.3
 gevent==1.2.2
+-e git+git://github.com/dvska/gdata-python3.git#egg=gdata
